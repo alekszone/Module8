@@ -32,6 +32,14 @@ const UserSchema = new Schema(
       enum: ["admin", "user"],
       required: true,
     },
+    refreshTokens: [
+        {
+          token: {
+            type: String,
+            required: true,
+          },
+        },
+      ],
 }
    
 )
@@ -68,6 +76,6 @@ UserSchema.pre("save", async function (next) {
 
 
 
-const UserModel = mongoose.model("User", UserSchema)
+const UserModel = mongoose.model("user", UserSchema)
 
 module.exports = UserModel
