@@ -14,7 +14,7 @@ usersRouter.get("/", authorize, async (req, res, next) => {
       .skip(query.options.skip)
       .limit(query.options.limit)
       .sort(query.options.sort)
-
+console.log(users)
     res.send(users)
   } catch (error) {
     console.log(error)
@@ -22,9 +22,11 @@ usersRouter.get("/", authorize, async (req, res, next) => {
   }
 })
 
-usersRouter.get("/me", authorize, async (req, res, next) => {
+usersRouter.get("/me", authorize, async (req, res, next) => { 
+    
   try {
     res.send(req.user)
+   
   } catch (error) {
     next("While reading users list a problem occurred!")
   }
@@ -85,8 +87,9 @@ usersRouter.post("/logout", authorize, async (req, res, next) => {
     req.user.refreshTokens = req.user.refreshTokens.filter(
       (t) => t.token !== req.body.refreshToken
     )
+    console.log(req.user.refreshTokens)
     await req.user.save()
-    res.send()
+    res.send("Ypu are logget out")
   } catch (err) {
     next(err)
   }

@@ -19,13 +19,12 @@ return {token:newToken,refreshToken:refreshTok}
     throw new Error(error)
 }
 }
-const generateJWT = (payload)=>console.log(payload)
+const generateJWT = (payload)=>
 new Promise((res,rej)=>
 jwt.sign(
-    payload,
-    
+    payload,    
     process.env.JWT_SECRET,
-    { expiresIn: 6 },
+    { expiresIn: 100 },
     (err, token) => {
       if (err) rej(err)
       res(token)
@@ -35,10 +34,11 @@ jwt.sign(
 
 const verifyJWT = (token) =>
 new Promise((res, rej) =>
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) rej(err)
     res(decoded)
-  })
+  }),
+ 
 )
 
 const generateRefreshJWT = (payload) =>
