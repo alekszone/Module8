@@ -2,7 +2,7 @@ const express = require("express")
 const q2m = require("query-to-mongo")
 const { authenticate, refreshToken } = require("./authTools")
 const { authorize } = require("../middlewares/authorize")
-
+const passport = require("passport")
 const UserModel = require("./userSchema")
 
 const usersRouter = express.Router()

@@ -40,6 +40,7 @@ const UserSchema = new Schema(
           },
         },
       ],
+      googleId: String,
 }
    
 )

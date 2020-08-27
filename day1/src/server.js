@@ -3,7 +3,8 @@ const cors = require("cors")
 // const { join } = require("path")
 const listEndpoints = require("express-list-endpoints")
 const mongoose = require("mongoose")
-
+const passaport = require("passport")
+const google =  require("./services/users/google")
 
 const usersRouter = require("./services/users")
 
@@ -17,10 +18,11 @@ const {
 const server = express()
 const port = process.env.PORT
 server.use(cors())
-
-
-
 server.use(express.json())
+server.use(morgan())
+server.use(passaport.initialize())
+
+
 
 
 server.use("/users", usersRouter)
