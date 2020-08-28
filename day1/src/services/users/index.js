@@ -124,4 +124,31 @@ usersRouter.post("/refreshToken", async (req, res, next) => {
   }
 })
 
+usersRouter.get("/googleLogin",
+passport.authenticate("google",{scope:["profile","email"]}))
+
+usersRouter.get(
+    "/googleRedirect",
+    passport.authenticate("google"),
+    async(req,res,next)=>{
+        try{
+            const {token,refreshToken} = req.user.tokens
+        res.cookie("accessToken",token,{
+            httpOnly:true,
+        })
+        res.cookie("refreshToken",refreshToken,{
+        httpOnly:true,
+        path:"users/refreshToken",
+
+        })
+        res.status(200).redirect("htt://localhost:4000/")
+        }catch(error){
+            next(error)
+        }
+
+
+    }
+)
+
+
 module.exports = usersRouter

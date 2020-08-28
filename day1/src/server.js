@@ -5,9 +5,9 @@ const listEndpoints = require("express-list-endpoints")
 const mongoose = require("mongoose")
 const passaport = require("passport")
 const google =  require("./services/users/google")
-
+const cookie = require("cookie-parser")
 const usersRouter = require("./services/users")
-
+const morgan = require("morgan")
 const {
   notFoundHandler,
   forbiddenHandler,
@@ -19,6 +19,7 @@ const server = express()
 const port = process.env.PORT
 server.use(cors())
 server.use(express.json())
+server.use(cookie())
 server.use(morgan())
 server.use(passaport.initialize())
 
