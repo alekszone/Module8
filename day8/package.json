@@ -1,0 +1,25 @@
+{
+  "name": "day8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@api.video/nodejs-sdk": "^1.8.4",
+    "@azure/storage-blob": "^12.2.0-preview.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "file-type": "^15.0.0",
+    "fs-extra": "^9.0.1",
+    "multer": "^1.4.2",
+    "multer-azure-storage": "^0.2.0",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.4"
+  }
+}
